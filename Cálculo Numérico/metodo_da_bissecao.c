@@ -22,7 +22,7 @@ int main(void)
     erro = b-a;
 
     printf("\na\tXm\tb\tf(a)\tf(Xm)\tf(b)\terro\n");
-    printf("%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\n", a, Xm, b, f_a, f_xm, f_b, erro);
+    printf("%.2f\t%.4f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\n", a, Xm, b, f_a, f_xm, f_b, erro);
     
     while ((b-a) > precisao)
     {
