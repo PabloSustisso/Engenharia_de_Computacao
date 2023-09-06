@@ -40,7 +40,7 @@ int main(void)
         }
         
         Xm = (a+b)/2;
-        f_a = f_a = 4 * (sin(a)) - pow(e, a);
+        f_a = 4 * (sin(a)) - pow(e, a);
         f_b = 4 * (sin(b)) - pow(e, b);
         f_xm = 4 * (sin(Xm)) - pow(e, Xm);
         erro = erro/2;
