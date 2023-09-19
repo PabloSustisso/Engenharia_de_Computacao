@@ -4,6 +4,16 @@
 #include <string.h>
 
 #define e 2.718281828459045235360287
+#define pi 3.14159265359
+
+float function(float x)
+{
+    float f;
+
+    f = sin(x);
+
+    return f;
+}
 
 int main(void)
 {
@@ -16,23 +26,22 @@ int main(void)
     printf("Digite a precisao desejada: ");
     scanf("%f", &precisao);
 
-    // Xm = (a + b) / 2;
-    // f_a = 70 * (pow(e, (-1.5 * a))) + 2.5 * (pow(e, (-0.075 * a))) - 9;
-    // f_b = 70 * (pow(e, (-1.5 * b))) + 2.5 * (pow(e, (-0.075 * b))) - 9;
-    // f_xm = 70 * (pow(e, (-1.5 * Xm))) + 2.5 * (pow(e, (-0.075 * Xm))) - 9;
-    // erro = b - a;
-
     Xm = (a + b) / 2;
-    f_a = a * log10(a) - 1;
-    f_b = b * log10(b) - 1;
-    f_xm = Xm * log10(Xm) - 1;
-    erro = (b - a);
+    f_a = function(a);
+    f_b = function(b);
+    f_xm = function(Xm);
+    erro = ((b) - (a));
+
+    if (erro < 0)
+    {
+        erro *= (-1);
+    }
 
     n_iteracoes = ceil((log10(b - a) - log10(precisao)) / (log10(2)));
     printf("\nNumero de iteracoes: %d\n", n_iteracoes);
 
     printf("\na\tXm\tb\tf(a)\tf(Xm)\tf(b)\terro\n");
-    printf("%.2f\t%.4f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\n", a, Xm, b, f_a, f_xm, f_b, erro);
+    printf("%2.2f\t%2.2f\t%2.2f\t%2.2f\t%2.2f\t%2.2f\t%2.6f\n", a, Xm, b, f_a, f_xm, f_b, erro);
 
     while (erro > precisao)
     {
@@ -49,19 +58,18 @@ int main(void)
             a = Xm;
         }
 
-        // Xm = (a + b) / 2;
-        // f_a = 70 * (pow(e, (-1.5 * a))) + 2.5 * (pow(e, (-0.075 * a))) - 9;
-        // f_b = 70 * (pow(e, (-1.5 * b))) + 2.5 * (pow(e, (-0.075 * b))) - 9;
-        // f_xm = 70 * (pow(e, (-1.5 * Xm))) + 2.5 * (pow(e, (-0.075 * Xm))) - 9;
-        // erro = b - a;
-
         Xm = (a + b) / 2;
-        f_a = a * log10(a) - 1;
-        f_b = b * log10(b) - 1;
-        f_xm = Xm * log10(Xm) - 1;
-        erro = (b - a);
+        f_a = function(a);
+        f_b = function(b);
+        f_xm = function(Xm);
+        erro = ((b) - (a));
 
-        printf("%.2f\t%.4f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\n", a, Xm, b, f_a, f_xm, f_b, erro);
+        if (erro < 0)
+        {
+            erro *= (-1);
+        }
+
+        printf("%2.2f\t%2.2f\t%2.2f\t%2.2f\t%2.2f\t%2.2f\t%2.6f\n", a, Xm, b, f_a, f_xm, f_b, erro);
     }
 
     return 0;
