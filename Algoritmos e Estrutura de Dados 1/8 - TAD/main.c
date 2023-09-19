@@ -10,6 +10,10 @@ int main(void){
 		printf("distancia entre pontos: %f\n", d);
 		
 		alterar(p1, 1.5, 1.5);
+		float x, y;
+
+		acessar(p2, &x, &y);
+		printf("x = %f, y = %f\n", x, y);
 		
 		return 0;
 }
