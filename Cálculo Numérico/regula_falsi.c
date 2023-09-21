@@ -34,7 +34,7 @@ int main(void)
         erro = fabs(f_xm);
 
     printf("\na\tX\tb\tf(a)\tf(X)\tf(b)\terro\n");
-    printf("%2.2f\t%2.2f\t%2.2f\t%2.2f\t%2.2f\t%2.2f\t%2.6f\n", a, Xm, b, f_a, f_xm, f_b, erro);
+    printf("%2.4f\t%2.4f\t%2.4f\t%2.4f\t%2.2f\t%2.2f\t%2.6f\n", a, Xm, b, f_a, f_xm, f_b, erro);
 
     do
     {
@@ -66,7 +66,7 @@ int main(void)
                 erro = fabs(f_xm);
         }
 
-        printf("%2.2f\t%2.2f\t%2.2f\t%2.2f\t%2.2f\t%2.2f\t%2.6f\n", a, Xm, b, f_a, f_xm, f_b, erro);
+        printf("%2.4f\t%2.4f\t%2.4f\t%2.4f\t%2.2f\t%2.2f\t%2.6f\n", a, Xm, b, f_a, f_xm, f_b, erro);
 
     } while (erro >= precisao);
 

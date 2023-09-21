@@ -1,3 +1,5 @@
+//Método da Bisseção
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -10,7 +12,7 @@ float function(float x)
 {
     float f;
 
-    f = sin(x);
+    f = (275 * log((1850) / (1850 - (27 * x)))) + (9.8 * x) - 150;
 
     return f;
 }
@@ -41,7 +43,7 @@ int main(void)
     printf("\nNumero de iteracoes: %d\n", n_iteracoes);
 
     printf("\na\tXm\tb\tf(a)\tf(Xm)\tf(b)\terro\n");
-    printf("%2.2f\t%2.2f\t%2.2f\t%2.2f\t%2.2f\t%2.2f\t%2.6f\n", a, Xm, b, f_a, f_xm, f_b, erro);
+    printf("%2.4f\t%2.4f\t%2.4f\t%2.4f\t%2.2f\t%2.2f\t%2.6f\n", a, Xm, b, f_a, f_xm, f_b, erro);
 
     while (erro > precisao)
     {
@@ -69,7 +71,7 @@ int main(void)
             erro *= (-1);
         }
 
-        printf("%2.2f\t%2.2f\t%2.2f\t%2.2f\t%2.2f\t%2.2f\t%2.6f\n", a, Xm, b, f_a, f_xm, f_b, erro);
+        printf("%2.4f\t%2.4f\t%2.4f\t%2.4f\t%2.2f\t%2.2f\t%2.6f\n", a, Xm, b, f_a, f_xm, f_b, erro);
     }
 
     return 0;
