@@ -1,0 +1,30 @@
+#include "lista.h"
+int main(void)
+{
+  int i;
+
+  Lista* L1 = criar_lista();
+  Lista* L2 = criar_lista();
+  
+	for(i=25;i>=1;i--)
+	   if(inserir(L1, i))
+	     printf("Chave %d inserida!",i);
+	  else   
+	     printf("Falha ao inserir chave %d!",i);
+	for(i=50;i>=26;i--)  
+		if(inserir(L2, i))
+	     printf("Chave %d inserida!",i);
+     else   
+	     printf("Falha ao inserir chave %d!",i);
+	   
+	imprimir_lista(L1);
+	imprimir_lista(L2);   
+	
+	Lista* L3 = concatenar(L1, L2);
+	imprimir_lista(L3);
+	
+	Lista* L4 = intercalar_ordenado(L1, L2);
+	imprimir_lista(L4);
+  
+	return 0;
+}

@@ -10,6 +10,7 @@ int main(void){
 		printf("distancia entre pontos: %f\n", d);
 		
 		alterar(p1, 1.5, 1.5);
+		imprimir_ponto(p1);
 		float x, y;
 
 		acessar(p2, &x, &y);
