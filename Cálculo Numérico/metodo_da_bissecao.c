@@ -12,7 +12,15 @@ float function(float x)
 {
     float f;
 
-    f = (275 * log((1850) / (1850 - (27 * x)))) + (9.8 * x) - 150;
+    //f = sqrt(x) - 5*pow(e, (-x));
+    //f = x*log10(x) - 1;
+    //f = 0.4*x + 0.5 - cos(2*x);
+    //f = 0.4*x + 0.5 - sin(2*x);
+
+    // float p = -(x*x);
+    // f = pow(e, p) - cos(x);
+
+    //f = 4*sin(x) - pow(e, x);
 
     return f;
 }
@@ -32,12 +40,7 @@ int main(void)
     f_a = function(a);
     f_b = function(b);
     f_xm = function(Xm);
-    erro = ((b) - (a));
-
-    if (erro < 0)
-    {
-        erro *= (-1);
-    }
+    erro = fabs((b) - (a));
 
     n_iteracoes = ceil((log10(b - a) - log10(precisao)) / (log10(2)));
     printf("\nNumero de iteracoes: %d\n", n_iteracoes);
@@ -64,12 +67,7 @@ int main(void)
         f_a = function(a);
         f_b = function(b);
         f_xm = function(Xm);
-        erro = ((b) - (a));
-
-        if (erro < 0)
-        {
-            erro *= (-1);
-        }
+        erro = fabs((b) - (a));
 
         printf("%2.4f\t%2.4f\t%2.4f\t%2.4f\t%2.2f\t%2.2f\t%2.6f\n", a, Xm, b, f_a, f_xm, f_b, erro);
     }
