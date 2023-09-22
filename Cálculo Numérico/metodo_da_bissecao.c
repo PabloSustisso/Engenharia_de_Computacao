@@ -17,10 +17,10 @@ float function(float x)
     //f = 0.4*x + 0.5 - cos(2*x);
     //f = 0.4*x + 0.5 - sin(2*x);
 
-    // float p = -(x*x);
-    // f = pow(e, p) - cos(x);
+    //float p = -(x*x);
+    //f = pow(e, p) - cos(x);
 
-    //f = 4*sin(x) - pow(e, x);
+    f = 4*sin(x) - pow(e, x);
 
     return f;
 }
