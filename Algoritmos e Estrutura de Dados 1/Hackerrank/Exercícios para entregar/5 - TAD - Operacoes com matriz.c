@@ -5,11 +5,40 @@
 #include <stdlib.h>
 
 // Definição do Tipo Abstrato de Dados (TAD) para processamento de matrizes
+/* Crie um TAD para processamento de matrizes com a seguinte estrutura e 
+operações, onde m é a matriz, l é a quantidade de linhas e c é a quantidade de colunas: */
 typedef struct{
     int **arr; // Matriz l x c (arranjo bidimensional)
     int l; // quantidade de linhas
     int c; // quantidade de colunas
 }Matriz;
+
+// Exercício:
+/* Input Format
+
+Na primeira linha, devem ser lidos dois números inteiros (e.g. l e c).
+
+Em seguida, ler l x c elementos.
+
+Após, ler dois números inteiros, sendo o primeiro a posição de uma linha (pl) e o segundo, a posição de uma coluna (pc).
+
+Por fim, ler quatro números inteiros referentes a posição de uma submatriz.
+
+Constraints
+
+.
+
+Output Format
+
+Na primeira linha, imprimir a linha da posição pl retornada pela função obter_linha.
+
+Na segunda linha, imprimir '\n'.
+
+Na terceira linha, imprimir a coluna da posição pc retornada pela função obter_coluna.
+
+Na quarta linha, imprimir '\n'.
+
+A partir da quinta linha, imprimir a submatriz. */
 
 // Função para inicializar uma matriz com l linhas e c colunas
 Matriz * iniciar(int l, int c)
