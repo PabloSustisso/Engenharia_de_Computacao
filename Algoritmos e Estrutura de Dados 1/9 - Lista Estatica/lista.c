@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "lista.h"
 
-
 // Estrutura para uma lista estática
 struct Lista{
     int item[MAX_SIZE]; // A lista pode ser de qualquer tipo. Nesse caso, é uma lista de int, mas também pode ser de float, char, string, etc.
