@@ -22,13 +22,19 @@ Imprimir os nomes que contêm a string procurada.*/
 typedef struct Lista Lista;
 
 struct Lista{
-    int item[MAX_SIZE];
+    char **nomes;
     int tam;
 };
 
-Lista* criar_lista(){
-    Lista *l = (Lista*) malloc(sizeof(Lista));
-
+Lista* criar_lista(int qtd){
+    Lista *l = (Lista*)malloc(sizeof(Lista));
+    l->nomes = (char**)malloc(qtd * sizeof(char*));
+    
+    for (int i = 0; i < qtd; i++)
+    {
+        l->nomes[i] = (char*)malloc(20 * sizeof(char*));
+    }
+    
     l->tam = 0;
 
     return l;
@@ -52,37 +58,36 @@ int lista_cheia(Lista *l){
         return 1;
 }
 
-int buscar(Lista *l, int chave){
+int buscar(Lista *l, char chave[]){
     int i;
 
     if (!lista_vazia(l)){
         for (i = 0; i < l->tam; i++)
-            if (l->item[i] == chave)
+            if (l->nomes[i] == chave)
                 return i;
     }
 
     return -1;
 }
 
-int inserir(Lista *l, int chave){
+int inserir(Lista *l, char chave[]){
     if (!lista_cheia(l)){
-        l->item[l->tam] = chave;
+        strcpy(l->nomes[l->tam], chave);
 
         l->tam++;
 
         return 1;
     }
 
- 
     return 0;
 }
 
-int remover(Lista *l, int chave){
+int remover(Lista *l, char chave[]){
     int i, p = buscar(l, chave);
 
     if (p > -1){
         for (i = p; i < l->tam - 1; i++)
-            l->item[i] = l->item[i + 1];
+            l->nomes[i] = l->nomes[i + 1];
 
         l->tam--;
 
@@ -97,42 +102,64 @@ void imprimir_lista(Lista *l){
 
     if (!lista_vazia(l)){
         for (i = 0; i < l->tam; i++)
-            printf("%d ", l->item[i]);
-
-        printf("\n");
+        {
+            printf("%s ", l->nomes[i]);
+            printf("\n");
+        }
     }
+}
+
+void buscarChave(char *nome, char palavra_chave[])
+{
+    int tam_nome = strlen(nome), tam_chave = strlen(palavra_chave), cont = 0, aux;
+
+    for (int i = 0; i < tam_nome; i++)
+    {
+        aux = i;
+        for (int j = 0; j < tam_chave; j++)
+        {
+            if (nome[aux] == palavra_chave[j])
+            {
+                cont++;
+                aux++;
+            }
+        }
+        if (cont == tam_chave)
+        {
+            printf("%s\n", nome);
+            break;
+        }
+        else
+            cont = 0;
+        
+    }
+    
 }
 
 int main(void)
 {
-    //int qtd;
-    char palavra[] = {'s','o','n'};
-    // scanf("%d", &qtd);
+    char palavra_chave[MAX_SIZE], aux[MAX_SIZE];
+    int qtd;
+    Lista *nomes;
 
-    // Lista *nomes;
-    // nomes = criar_lista();
+    setbuf(stdin, NULL);
+    scanf("%s", palavra_chave);
+    scanf("%d", &qtd);
 
-    char nome[] = {'a','n','d','e','r','s','o','n'};
-    char aux[MAX_SIZE];
+    nomes = criar_lista(qtd);
 
-    for (int i = 0; i < strlen(palavra); i++)
+    for (int i = 0; i < qtd; i++)
     {
-        for (int j = 0; j < strlen(nome); j++)
-        {
-            if (nome[j] == palavra[i])
-            {
-                aux[i] = nome[j];
-            }
-            else if (aux == palavra)
-            {
-                printf("%s", nome);
-            }
-            
-        }
+        scanf("%s", aux);
+        inserir(nomes, aux);
+    }
+
+    // imprimir_lista(nomes);
+
+    for (int i = 0; i < nomes->tam; i++)
+    {
+        buscarChave(nomes->nomes[i], palavra_chave);
     }
     
-
-    
-
     return 0;
 }
