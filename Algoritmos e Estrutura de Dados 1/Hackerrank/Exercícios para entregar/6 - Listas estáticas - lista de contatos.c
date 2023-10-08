@@ -1,3 +1,17 @@
+/*Dada uma função que receba uma lista estática de contatos e uma string. Essa função deverá imprimir os contatos que contêm essa string no nome. Por exemplo, para a string "son", podem ser encontrados nomes como: Son**ia, Ander**son, Jeffer**son**.
+
+Input Format
+
+A primeira linha a ser lida deve ser a string que deve ser procurada. Em seguida, deve ser lida um número inteiro referente à quantidade de nomes que devem ser incluídos na lista.
+
+Constraints
+
+Usar TAD de listas estáticas.
+
+Output Format
+
+Imprimir os nomes que contêm a string procurada.*/
+
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
@@ -12,7 +26,6 @@ struct Lista{
     int tam;
 };
 
-
 Lista* criar_lista(){
     Lista *l = (Lista*) malloc(sizeof(Lista));
 
@@ -20,7 +33,6 @@ Lista* criar_lista(){
 
     return l;
 }
-
 
 int lista_vazia(Lista *l){
     if (l == NULL)
@@ -31,7 +43,6 @@ int lista_vazia(Lista *l){
         return 1;
 }
 
-
 int lista_cheia(Lista *l){
     if (l == NULL)
         return -1;
@@ -40,7 +51,6 @@ int lista_cheia(Lista *l){
     else
         return 1;
 }
-
 
 int buscar(Lista *l, int chave){
     int i;
@@ -82,7 +92,6 @@ int remover(Lista *l, int chave){
     return 0;
 }
 
-
 void imprimir_lista(Lista *l){
     int i;
 
@@ -92,4 +101,38 @@ void imprimir_lista(Lista *l){
 
         printf("\n");
     }
+}
+
+int main(void)
+{
+    //int qtd;
+    char palavra[] = {'s','o','n'};
+    // scanf("%d", &qtd);
+
+    // Lista *nomes;
+    // nomes = criar_lista();
+
+    char nome[] = {'a','n','d','e','r','s','o','n'};
+    char aux[MAX_SIZE];
+
+    for (int i = 0; i < strlen(palavra); i++)
+    {
+        for (int j = 0; j < strlen(nome); j++)
+        {
+            if (nome[j] == palavra[i])
+            {
+                aux[i] = nome[j];
+            }
+            else if (aux == palavra)
+            {
+                printf("%s", nome);
+            }
+            
+        }
+    }
+    
+
+    
+
+    return 0;
 }
