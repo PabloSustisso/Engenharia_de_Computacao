@@ -136,6 +136,14 @@ void buscarChave(char *nome, char palavra_chave[])
     
 }
 
+void contatos(Lista *l1, char palavra_chave[])
+{
+    for (int i = 0; i < l1->tam; i++)
+    {
+        buscarChave(l1->nomes[i], palavra_chave);
+    }
+}
+
 int main(void)
 {
     char palavra_chave[MAX_SIZE], aux[MAX_SIZE];
@@ -156,10 +164,7 @@ int main(void)
 
     // imprimir_lista(nomes);
 
-    for (int i = 0; i < nomes->tam; i++)
-    {
-        buscarChave(nomes->nomes[i], palavra_chave);
-    }
+    contatos(nomes, palavra_chave);
     
     return 0;
 }

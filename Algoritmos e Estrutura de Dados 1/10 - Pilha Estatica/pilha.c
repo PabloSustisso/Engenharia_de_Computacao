@@ -1,9 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
-#include "pilha.h"
-
-
+#include <math.h>
 
 struct Pilha{
     int item[TAM_MAX];
