@@ -20,7 +20,7 @@ float function(float x)
     //float p = -(x*x);
     //f = pow(e, p) - cos(x);
 
-    f = 4*sin(x) - pow(e, x);
+    f = pow(e, x) - (2*x) - 2;
 
     return f;
 }
