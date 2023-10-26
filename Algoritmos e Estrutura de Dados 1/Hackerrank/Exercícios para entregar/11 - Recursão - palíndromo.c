@@ -1,15 +1,16 @@
 #include <stdio.h>
 #include <string.h>
 
-int palindromo(char string[], int inicio, int fim)
+void palindromo(char string[], int inicio, int fim)
 {
-    if (inicio >= fim) // Condicao de parada (verificar a metade da palavra)
-        return 1;
-    
-    if (string[inicio] == string[fim]) // Verificar cada letra da string
-        return palindromo(string, inicio+1, fim-1);
-    else
+    if (inicio >= fim){ // Condicao de parada (verificar a metade da palavra)
+        printf("palindromo");
         return 0;
+    }
+    if (string[inicio] == string[fim]) // Verificar cada letra da string
+        palindromo(string, inicio+1, fim-1);
+    else
+        printf("nao palindromo");
 }
 
 int main(void)
@@ -19,10 +20,7 @@ int main(void)
 
     int tam = strlen(str);
 
-    if (palindromo(str, 0, tam-1))
-        printf("palindromo");
-    else
-        printf("nao palindromo");
+    palindromo(str, 0, tam-1);
     
     return 0;
 }
