@@ -74,7 +74,7 @@ void selectsort2(int v[], int n){
 
 // Implementação do método insertion sort
 void insertsort(int v[], int n){
-	int i, x;
+	int i, j, x;
 
 	for (i = 1; i < n; i++){
 		x = v[i];
