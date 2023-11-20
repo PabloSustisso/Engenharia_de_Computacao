@@ -137,31 +137,88 @@ int verificar_fim(Fila *f){
 }
 
 Fila *gerenciarTransito(Fila *E1, Fila *E2, Fila *E3, Fila *R){
-    
+    int count = 0;
+
+    do{
+        while (count <= 3 && !fila_vazia(E1))
+        {
+            if (count == 3)
+            {
+                break;
+            }
+            
+            enfileirar(R, desenfileirar(E1));
+            count++;
+        }
+        count = 0;
+        while (count <= 3 && !fila_vazia(E2))
+        {
+            if (count == 3)
+            {
+                break;
+            }
+            
+            enfileirar(R, desenfileirar(E2));
+            count++;
+        }
+        count = 0;
+        while (count <= 3 && !fila_vazia(E3))
+        {
+            if (count == 3)
+            {
+                break;
+            }
+            
+            enfileirar(R, desenfileirar(E3));
+            count++;
+        }
+    }while(!fila_vazia(E1) || !fila_vazia(E2) || !fila_vazia(E3));
+
+    return R;
 }
 
 int main(void){
-    Fila *E1, *E2, *E3;
+    Fila *E1, *E2, *E3, *R;
     int num;
 
     E1 = criar_fila();
     E2 = criar_fila();
     E3 = criar_fila();
+    R = criar_fila();
 
-    while (num != -1)
-    {
+    do{
         scanf("%d", &num);
+
+        if (num == -1)
+        {
+            break;
+        }
+        
         enfileirar(E1, num);
-    }
-    while (num != -1)
-    {
+    }while(num != -1);
+
+    do{
         scanf("%d", &num);
+
+        if (num == -1)
+        {
+            break;
+        }
+        
         enfileirar(E2, num);
-    }
-    while (num != -1)
-    {
+    }while(num != -1);
+
+    do{
         scanf("%d", &num);
+
+        if (num == -1)
+        {
+            break;
+        }
+        
         enfileirar(E3, num);
-    }
-    
+    }while(num != -1);
+
+    gerenciarTransito(E1, E2, E3, R);
+    imprimir_fila(R);
 }
