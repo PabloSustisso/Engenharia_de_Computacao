@@ -65,6 +65,7 @@ void sortColumnMat(float **mat, int l, int c)
         k++;
     } 
     
+    free(v);
 }
 
 int main(void)
@@ -78,6 +79,8 @@ int main(void)
     scanMat(mat, l, c);
     sortColumnMat(mat, l , c);
     printMat(mat, l , c); // matriz ja ordenada
+
+    free(mat);
 
     return 0;
 }

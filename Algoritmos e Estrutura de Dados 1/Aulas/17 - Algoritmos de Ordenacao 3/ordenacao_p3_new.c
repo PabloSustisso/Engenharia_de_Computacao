@@ -105,7 +105,7 @@ void imprimir_vet_str(char **vstr, int n){
 int main(){
     int i, A[]={8,1,3,2,4,9,7,6,5,12}, B[10];
     
-    counting_sort(A, B, 10, int 15);
+    counting_sort(A, B, 10, 15);
     
     printf("counting_sort: ");
     for(i=0; i<10;i++)
