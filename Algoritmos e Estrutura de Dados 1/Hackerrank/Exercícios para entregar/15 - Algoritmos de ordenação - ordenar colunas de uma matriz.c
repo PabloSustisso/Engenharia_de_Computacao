@@ -68,6 +68,15 @@ void sortColumnMat(float **mat, int l, int c)
     free(v);
 }
 
+void liberarMat(float **mat, int l)
+{
+    for (int i = 0; i < l; i++)
+    {
+        free(mat[i]);
+    }
+    free(mat);
+}
+
 int main(void)
 {
     int l, c;
@@ -80,7 +89,7 @@ int main(void)
     sortColumnMat(mat, l , c);
     printMat(mat, l , c); // matriz ja ordenada
 
-    free(mat);
+    liberarMat(mat, l);
 
     return 0;
 }

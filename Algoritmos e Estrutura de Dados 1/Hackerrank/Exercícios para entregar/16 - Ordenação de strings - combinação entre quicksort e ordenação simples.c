@@ -66,6 +66,15 @@ void sortString(char **vstr, int n, int m, int n_cima, int n_baixo)
     }
 }
 
+void liberarChar(char **vstr, int qtd)
+{
+    for (int i = 0; i < qtd; i++)
+    {
+        free(vstr[i]);
+    }
+    free(vstr);
+}
+
 int main(void)
 {   
     int qtd; // quantidade de nomes
@@ -86,7 +95,7 @@ int main(void)
     for (int i = 0; i < qtd; i++) // imprimir os nomes
         printf("%s\n", vstr[i]);
 
-    free(vstr);
+    liberarChar(vstr, qtd);
 
     return 0;
 }
