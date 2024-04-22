@@ -172,53 +172,7 @@ int tamanho_LE(ListaE *l){
 
 void bubblesort_string(ListaE *l)
 {
-    Cell *aux1, *aux2;
-    int troca;
-    char *palavra;
-    palavra = (char*)malloc(sizeof(char));
-
-    if (l != NULL)
-    {
-        aux1 = l->head;
-        aux2 = l->head;
-
-        while (aux1->next != NULL)
-        {
-            while (aux2->next != NULL)
-            {
-                if (strcmp(aux1->item, aux2->item) > 0)
-                {
-                    palavra = aux2->item;
-                    aux2->item = aux1->item;
-                    aux1->item = palavra;
-                }
-                aux2 = aux2->next;
-            }
-            aux1 = aux1->next;
-        }
-        
-
-    //     do
-    //     {
-    //         troca = 0;
-
-    //         while (aux1->next != NULL)
-    //         {
-    //             if (strcmp(aux1->item, aux1->next->item) > 0)
-    //             {
-    //                 palavra = aux1->next->item;
-    //                 aux1->next->item = aux1->item;
-    //                 aux1->item = palavra;
-    //                 troca = 1;
-    //             }
-    //             aux1 = aux1->next;
-    //         }
-            
-    //     } while (troca);
-        
-    }
-
-    free(palavra);
+    
 }
 
 int main()
