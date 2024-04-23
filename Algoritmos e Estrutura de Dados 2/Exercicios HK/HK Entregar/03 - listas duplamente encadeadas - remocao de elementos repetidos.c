@@ -179,24 +179,18 @@ void imprimir(ListaDE *l){
     }
 }
 
-int liberar_LE(ListaDE *l){
-    CellDE *aux = NULL;
+void liberar_listaDE(ListaDE* lista) {
+    CellDE* atual = lista->head;
+    CellDE* proximo;
 
-    if (l != NULL){
-        while(l->head != NULL){
-            aux = l->head;
-
-            l->head = aux->next;
-
-            free(aux);
-        }
-
-        free(l);
-
-        return 1;
+    
+    while (atual != NULL) {
+        proximo = atual->next;
+        free(atual);
+        atual = proximo;
     }
 
-    return 0;
+    free(lista);  
 }
 
 int tamanho_LE(ListaDE *l){
@@ -218,7 +212,7 @@ int tamanho_LE(ListaDE *l){
 
 void remover_dup(ListaDE *l)
 {
-    CellDE *aux1, *aux2, *temp;
+    CellDE *aux1, *aux2;
 
     if (l != NULL)
     {
@@ -232,9 +226,16 @@ void remover_dup(ListaDE *l)
             {
                 if (aux1->item == aux2->item)
                 {
-                    temp = aux2;
+                    CellDE *temp = aux2;
                     aux2 = aux2->next;
-                    remover(temp->item, l);
+                    
+                    if (aux2 != NULL)
+                        aux2->previous = temp->previous;
+
+                    if (temp->previous != NULL)
+                        temp->previous->next = aux2;
+
+                    free(temp);
                 }
                 else
                     aux2 = aux2->next;
@@ -265,7 +266,7 @@ int main()
 
     imprimir(l);
 
-    liberar_LE(l);
+    liberar_listaDE(l);
 
     return 0;
 }
