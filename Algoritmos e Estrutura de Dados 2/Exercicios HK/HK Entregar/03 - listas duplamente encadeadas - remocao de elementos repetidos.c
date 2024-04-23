@@ -216,6 +216,20 @@ int tamanho_LE(ListaDE *l){
     return tam;
 }
 
+void remover_dup(ListaDE *l)
+{
+    CellDE *aux;
+    int num;
+
+    if (l != NULL)
+    {
+        aux = l->head;
+
+        
+    }
+    
+}
+
 int main()
 {
 
