@@ -218,13 +218,29 @@ int tamanho_LE(ListaDE *l){
 
 void remover_dup(ListaDE *l)
 {
-    CellDE *aux;
-    int num;
+    CellDE *aux1, *aux2, *temp;
 
     if (l != NULL)
     {
-        aux = l->head;
+        aux1 = l->head;
 
+        while (aux1 != NULL)
+        {
+            aux2 = aux1->next;
+
+            while (aux2 != NULL)
+            {
+                if (aux1->item == aux2->item)
+                {
+                    temp = aux2;
+                    aux2 = aux2->next;
+                    remover(temp->item, l);
+                }
+                else
+                    aux2 = aux2->next;
+            }
+            aux1 = aux1->next;
+        }
         
     }
     
@@ -232,6 +248,24 @@ void remover_dup(ListaDE *l)
 
 int main()
 {
+    ListaDE *l = criar_ListaDE();
+    int item = 0;
+
+    while (item != -1)
+    {
+        scanf("%d", &item);
+
+        if (item == -1)
+            break;
+
+        inserir_ultimo(item, l);
+    }
+ 
+    remover_dup(l);
+
+    imprimir(l);
+
+    liberar_LE(l);
 
     return 0;
 }
