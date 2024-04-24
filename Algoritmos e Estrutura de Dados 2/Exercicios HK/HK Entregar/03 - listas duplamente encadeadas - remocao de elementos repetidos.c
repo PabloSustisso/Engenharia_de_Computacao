@@ -179,24 +179,18 @@ void imprimir(ListaDE *l){
     }
 }
 
-int liberar_LE(ListaDE *l){
-    CellDE *aux = NULL;
+void liberar_listaDE(ListaDE* lista) {
+    CellDE* atual = lista->head;
+    CellDE* proximo;
 
-    if (l != NULL){
-        while(l->head != NULL){
-            aux = l->head;
-
-            l->head = aux->next;
-
-            free(aux);
-        }
-
-        free(l);
-
-        return 1;
+    
+    while (atual != NULL) {
+        proximo = atual->next;
+        free(atual);
+        atual = proximo;
     }
 
-    return 0;
+    free(lista);  
 }
 
 int tamanho_LE(ListaDE *l){
@@ -216,36 +210,41 @@ int tamanho_LE(ListaDE *l){
     return tam;
 }
 
-void remover_rep(ListaDE *l)
+void remover_dup(ListaDE *l)
 {
     CellDE *aux1, *aux2;
-    int contador = 0;
 
     if (l != NULL)
     {
         aux1 = l->head;
-        aux2 = l->head;
 
         while (aux1 != NULL)
         {
+            aux2 = aux1->next;
+
             while (aux2 != NULL)
             {
                 if (aux1->item == aux2->item)
                 {
-                    contador++;
+                    CellDE *temp = aux2;
+                    aux2 = aux2->next;
+                    
+                    if (aux2 != NULL)
+                        aux2->previous = temp->previous;
 
-                    if (contador > 1)
-                    {
-                        remover(aux2->item, l);
-                        contador = 0;
-                    }
+                    if (temp->previous != NULL)
+                        temp->previous->next = aux2;
+
+                    free(temp);
                 }
-                aux2 = aux2->next;
+                else
+                    aux2 = aux2->next;
             }
-            aux2 = NULL;
             aux1 = aux1->next;
         }
+        
     }
+    
 }
 
 int main()
@@ -255,18 +254,19 @@ int main()
 
     while (item != -1)
     {
+        scanf("%d", &item);
+
         if (item == -1)
             break;
 
-        scanf("%d", &item);
         inserir_ultimo(item, l);
     }
-    
-    imprimir(l);
-    remover_rep(l);
+ 
+    remover_dup(l);
+
     imprimir(l);
 
-    liberar_LE(l);
+    liberar_listaDE(l);
 
     return 0;
 }
