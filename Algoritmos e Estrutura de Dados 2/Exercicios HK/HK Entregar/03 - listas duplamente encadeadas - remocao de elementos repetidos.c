@@ -216,8 +216,57 @@ int tamanho_LE(ListaDE *l){
     return tam;
 }
 
+void remover_rep(ListaDE *l)
+{
+    CellDE *aux1, *aux2;
+    int contador = 0;
+
+    if (l != NULL)
+    {
+        aux1 = l->head;
+        aux2 = l->head;
+
+        while (aux1 != NULL)
+        {
+            while (aux2 != NULL)
+            {
+                if (aux1->item == aux2->item)
+                {
+                    contador++;
+
+                    if (contador > 1)
+                    {
+                        remover(aux2->item, l);
+                        contador = 0;
+                    }
+                }
+                aux2 = aux2->next;
+            }
+            aux2 = NULL;
+            aux1 = aux1->next;
+        }
+    }
+}
+
 int main()
 {
+    ListaDE *l = criar_ListaDE();
+    int item = 0;
+
+    while (item != -1)
+    {
+        if (item == -1)
+            break;
+
+        scanf("%d", &item);
+        inserir_ultimo(item, l);
+    }
+    
+    imprimir(l);
+    remover_rep(l);
+    imprimir(l);
+
+    liberar_LE(l);
 
     return 0;
 }
