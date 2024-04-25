@@ -181,30 +181,22 @@ NodeB * inserir(NodeB *tree, int key){
 
 int contar_pag_cheias(NodeB *tree)
 {
+    int count = 0;
+
     if (tree != NULL)
     {
-        if (tree->eh_no_folha)
+        if (tree->nro_chaves == N - 1)
+            count++;
+            
+        if (tree->filhos[0] != NULL)
         {
-            if (tree->nro_chaves == N - 1)
-                return 1;
-            else
-                return 0;
-        }
-        else
-        {
-            int cheias = 0;
             for (int i = 0; i < N; i++)
-            {
                 if (tree->filhos[i] != NULL)
-                    cheias += contar_pag_cheias(tree->filhos[i]);
-            }
-            return cheias;
+                    count += contar_pag_cheias(tree->filhos[i]);
         }
     }
-    else
-    {
-        return 0;
-    }
+
+    return count;
 }
 
 
