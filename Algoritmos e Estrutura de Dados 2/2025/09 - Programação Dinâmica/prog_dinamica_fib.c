@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 // Definimos um N maior para testar o limite
-#define N 48
+#define N 90
 
 // Usamos 'long long int' para armazenar números grandes
 long long int F[N + 1];
