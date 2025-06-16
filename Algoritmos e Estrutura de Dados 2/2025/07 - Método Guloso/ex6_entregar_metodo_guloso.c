@@ -55,10 +55,6 @@ void solve(int matriz[N][N], int percurso[], int *distancia_total){
     percurso[N] = percurso[0];
 }
 
-void forca_bruta(int matriz[N][N], int percurso[], int *distancia_total){
-    
-}
-
 int main(){
     int matriz[N][N] = {
         {  0, 12, 10, 19,  8, 15, 14, 20, 18, 11 },
@@ -78,6 +74,7 @@ int main(){
 
     solve(matriz, percurso, &distancia_total);
 
+    system("cls");
     printf("Solucao pelo metodo guloso (vizinho mais proximo):\n");
     printf("---------------------------------------------------\n");
     printf("Distancia total percorrida: %d\n", distancia_total);

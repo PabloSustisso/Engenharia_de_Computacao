@@ -5,6 +5,8 @@
 
 //Exercício 6 lista 2 - Prova por força bruta
 //OBS: o gemini fez esse código, pois não tive capacidade cerebral o suficiente para pensar por mim mesmo, porém, entendi o conceito
+//OBS2: o resultado encontrado pela força bruta não é o mesmo encontrado pelo método guloso
+//portanto, a solução pelo método guloso não foi ótima
 
 #define N 10
 
