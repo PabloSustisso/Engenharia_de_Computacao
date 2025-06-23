@@ -36,7 +36,7 @@ int comp(const void* a, const void* b){
 
     if((tA->deadline-tA->tempo_exec) > (tB->deadline-tB->tempo_exec))
         return -1;
-    if((tA->deadline-tA->tempo_exec) <= (tB->deadline-tB->tempo_exec))
+    if((tA->deadline-tA->tempo_exec) < (tB->deadline-tB->tempo_exec))
         return 1;
     return 0;
 }
@@ -46,23 +46,20 @@ int solve(Tarefas *t, int n){
     //quanto maior o saldo, mais pro inicio vai ser ordenado
     qsort(t, n, sizeof(Tarefas), comp); //amem aleluia
 
-    int tempo_acumulado = 0;
     int atraso_max = 0;
 
     for(int i = 0; i < n; i++){
         printf("%d ", t[i].id);
 
-        tempo_acumulado += t[i].tempo_exec;
+        int atraso_atual = t[i].deadline - t[i].tempo_exec;
 
-        int atraso_atual = tempo_acumulado - t[i].deadline;
-
-        if(atraso_atual > atraso_max){
-            atraso_max = atraso_atual;
-        }
+        atraso_max += atraso_atual;
     }
 
     if(atraso_max > 0)
         return 0;
+    if(atraso_max < 0)
+        atraso_max = atraso_max*(-1);
 
     return atraso_max;
 }
