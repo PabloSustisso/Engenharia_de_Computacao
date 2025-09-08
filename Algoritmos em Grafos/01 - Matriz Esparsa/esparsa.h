@@ -161,6 +161,14 @@ void apaga_matriz(Matriz_Esparsa *m) {
 }
 
 //2)cria a transposta de uma matriz
-Matriz_Esparsa* criar_transposta(Matriz_Esparsa *a, Matriz_Esparsa *b){
-    
+Matriz_Esparsa* criar_transposta(Matriz_Esparsa *m){
+    Matriz_Esparsa *transposta = criar_matriz(m->qtd_colunas, m->qtd_linhas);
+
+    for (int i = 0; i < m->qtd_colunas; i++) {
+        for (int j = 0; j < m->qtd_linhas; j++) {
+            inserir_valor(transposta, i, j, buscar_valor(m, j, i));
+        }
+    }
+
+    return transposta;
 }
