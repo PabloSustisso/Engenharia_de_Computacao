@@ -172,3 +172,8 @@ Matriz_Esparsa* criar_transposta(Matriz_Esparsa *m){
 
     return transposta;
 }
+
+//3)Soma duas matrizes e coloca o resultado em C
+Matriz_Esparsa* somar_matrizes(Matriz_Esparsa *a, Matriz_Esparsa *b, Matriz_Esparsa *c){
+
+}

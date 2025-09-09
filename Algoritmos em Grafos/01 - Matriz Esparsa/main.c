@@ -15,7 +15,7 @@ Matriz_Esparsa* matriz_trabalho(){
 
 int main(){
     //matriz teste do trabalho
-    Matriz_Esparsa *m = criar_matriz(5, 5);
+    Matriz_Esparsa *m = criar_matriz(2, 2);
 
     int k = 1;
     for(int i = 0; i < m->qtd_linhas; i++){
@@ -26,8 +26,8 @@ int main(){
     }
 
     imprime_matriz(m);
-    Matriz_Esparsa *t = criar_transposta(m);
-    imprime_matriz(t);
+    //Matriz_Esparsa *t = criar_transposta(m);
+    //imprime_matriz(t);
 
     //1) desaloca todos os elementos da matriz e libera a memoria
     apaga_matriz(m);
