@@ -13,14 +13,40 @@ Matriz_Esparsa* matriz_trabalho(){
     return m;
 }
 
-// Funcao principal para testar a biblioteca de Matriz Esparsa
-int main() {
+void teste2(Matriz_Esparsa *m){
+    m = matriz_trabalho();
+
     printf("--- INICIO DOS TESTES DA BIBLIOTECA DE MATRIZ ESPARSA ---\n");
 
     // --- 1. Teste de Criacao, Insercao e Impressao ---
     printf("\n========================================================\n");
     printf("1. TESTE: Criacao de Matriz, Insercao e Impressao\n");
     printf("========================================================\n");
+
+    printf("-> Matriz A (%dx%d) criada.\n", m->qtd_linhas, m->qtd_colunas);
+    imprime_matriz(m);
+
+    // --- 2. Teste de Busca de Valor ---
+    printf("\n========================================================\n");
+    printf("2. TESTE: Busca de Valores em Matriz A\n");
+    printf("========================================================\n");
+    printf("-> Buscando valor em (0,0). Esperado: 2. Resultado: %d\n", buscar_valor(m, 0, 0));
+    printf("-> Buscando valor em (5,4). Esperado: 3. Resultado: %d\n", buscar_valor(m, 5, 4));
+    printf("-> Buscando valor em (2,0) (posicao vazia). Esperado: 0. Resultado: %d\n", buscar_valor(m, 2, 0));
+
+    // --- 3. Teste de Matriz Transposta ---
+    printf("\n========================================================\n");
+    printf("3. TESTE: Criacao de Matriz Transposta\n");
+    printf("========================================================\n");
+    printf("-> Criando a transposta da Matriz A...\n");
+    Matriz_Esparsa *transpostaM = criar_transposta(m);
+    printf("-> Matriz Transposta de A (6x7):");
+    imprime_matriz(transpostaM);
+}
+
+// Funcao principal para testar a biblioteca de Matriz Esparsa
+int main() {
+    Matriz_Esparsa *m;
 
     // Cria uma matriz A de tamanho 4x5
     Matriz_Esparsa *matrizA = criar_matriz(4, 5);
@@ -32,37 +58,10 @@ int main() {
     inserir_valor(matrizA, 1, 3, -5);
     inserir_valor(matrizA, 2, 4, 30);
     inserir_valor(matrizA, 3, 0, 40);
-    printf("-> Valores inseridos em A: (0,2)=10, (1,1)=20, (1,3)=-5, (2,4)=30, (3,0)=40\n");
 
-    // Tenta inserir um valor fora dos limites (deve ser ignorado)
-    inserir_valor(matrizA, 5, 5, 99);
-    printf("-> Tentativa de insercao fora dos limites (5,5) -> deve ser ignorada.\n");
+    //passo 1 ao 3
+    teste2(m);
 
-    // Tenta inserir valor zero (deve ser ignorado)
-    inserir_valor(matrizA, 0, 0, 0);
-    printf("-> Tentativa de insercao de valor 0 em (0,0) -> deve ser ignorada.\n");
-
-    // Atualiza um valor ja existente
-    printf("-> Atualizando o valor em (1,1) de 20 para 25.\n");
-    inserir_valor(matrizA, 1, 1, 25);
-
-    // Imprime a matriz A
-    imprime_matriz(matrizA);
-
-    // --- 2. Teste de Busca de Valor ---
-    printf("\n========================================================\n");
-    printf("2. TESTE: Busca de Valores em Matriz A\n");
-    printf("========================================================\n");
-    printf("-> Buscando valor em (0,2). Esperado: 10. Resultado: %d\n", buscar_valor(matrizA, 0, 2));
-    printf("-> Buscando valor em (1,1) (atualizado). Esperado: 25. Resultado: %d\n", buscar_valor(matrizA, 1, 1));
-    printf("-> Buscando valor em (2,0) (posicao vazia). Esperado: 0. Resultado: %d\n", buscar_valor(matrizA, 2, 0));
-
-
-    // --- 3. Teste de Matriz Transposta ---
-    printf("\n========================================================\n");
-    printf("3. TESTE: Criacao de Matriz Transposta\n");
-    printf("========================================================\n");
-    printf("-> Criando a transposta da Matriz A...\n");
     Matriz_Esparsa *transpostaA = criar_transposta(matrizA);
     printf("-> Matriz A original (4x5):");
     imprime_matriz(matrizA);
